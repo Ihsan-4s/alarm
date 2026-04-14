@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:alarm2/editAlarm.dart';
+
+class ListAlarm extends StatefulWidget {
+  const ListAlarm({super.key});
+
+  @override
+  State<ListAlarm> createState() => _ListAlarmState();
+}
+
+class _ListAlarmState extends State<ListAlarm> {
+  bool isOn = false;
+  bool isOn2 = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Alarm List"),
+        backgroundColor: Colors.teal[400],
+      ),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return 
+            Card(
+              elevation: 10.0,
+              child: InkWell(
+                onTap: () {
+                    Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:( (context) => editAlarm())                             
+                              ),
+                            );
+                },
+
+                child: ListTile(
+                  leading: Icon(Icons.alarm_sharp),
+                  title: Text("02:50"),
+                  subtitle: Text("Everyday"),
+                  trailing:
+                      // Icon(Icons.toggle_off),
+                      Switch(
+                        activeColor: Colors.blue,
+                        value: isOn2,
+                        onChanged: (value) {
+                          setState(() {
+                            isOn2 = value;
+                          });
+                        },
+                      ),
+                ),
+              ),
+            );
+        },
+      )
+    );
+  }
+}

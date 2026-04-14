@@ -15,45 +15,34 @@ class _AlarmPageState extends State<AlarmPage> {
       appBar: AppBar(
         title: Text("Set Your Alarm"),
         backgroundColor: Colors.amber,
-        leading: Icon(Icons.home,),
+        leading: Icon(Icons.home),
       ),
       body: Column(
-       
-          children: [
-            Padding(padding: EdgeInsetsGeometry.only( top: 30), 
-             child:
-            Center(
-              child:
-            Icon(
-              Icons.alarm,
-              size: 100,
-              color: Colors.blue,
-              ),
-             ),
+        children: [
+          Padding(
+            padding: EdgeInsetsGeometry.only(top: 30),
+            child: Center(
+              child: Icon(Icons.alarm, size: 100, color: Colors.blue),
             ),
-            Text("07 : 59",
-            style: TextStyle(
-              fontSize: 35,
-            ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Set My Alarm")
-              )
-          ],
+          ),
+          Text("07 : 59", style: TextStyle(fontSize: 35)),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Set My Alarm"),
+          ),
+        ],
       ),
-       floatingActionButton: FloatingActionButton(
-        child: 
-        Icon(Icons.list),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.list),
         onPressed: () {
-
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ListAlarm()),
-            );
-        }),
+          );
+        },
+      ),
     );
   }
 }

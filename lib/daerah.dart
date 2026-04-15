@@ -1,34 +1,45 @@
 import 'package:flutter/material.dart';
 
-class Daerah extends StatelessWidget {
+class Daerah extends StatefulWidget {
   const Daerah({super.key});
+
+  @override
+  State<Daerah> createState() => _DaerahState();
+}
+
+class _DaerahState extends State<Daerah> {
+  List<String> lokasi = [
+    "Jawa Barat",
+    "Jawa Tengah",
+    "Jawa Timur",
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.yellow,
-        title: Text("Daerah"),
+        title: const Text("Daerah"),
       ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text("Jawa Barat"),
-            subtitle: Text("Deskripsi Daerah 1"),
-          ),
-          ListTile(
-            title: Text("Jawa Tengah"),
-            subtitle: Text("Deskripsi Daerah 2"),
-          ),
-          ListTile(
-            title: Text("Jawa Timur"),
-            subtitle: Text("Deskripsi Daerah 3"),
-          ),
-        ],
+
+      body: ListView.builder(
+        itemCount: lokasi.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(lokasi[index]),
+            subtitle: const Text("Lokasi"),
+          );
+        },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        // Handle floating action button press
-      }, child: Text("+"),),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            lokasi.add("Jawa Barat");
+          });
+        },
+        child: const Text("+"),
+      ),
     );
   }
 }

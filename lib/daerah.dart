@@ -26,6 +26,9 @@ class Daerah extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        // Handle floating action button press
+      }, child: Text("+"),),
     );
   }
 }

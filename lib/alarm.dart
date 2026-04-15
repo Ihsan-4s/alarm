@@ -15,7 +15,6 @@ class _AlarmPageState extends State<AlarmPage> {
       appBar: AppBar(
         title: Text("Set Your Alarm"),
         backgroundColor: Colors.amber,
-        leading: Icon(Icons.home),
       ),
       body: Column(
         children: [

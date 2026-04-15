@@ -3,6 +3,7 @@ import 'package:alarm2/alarm.dart';
 import 'package:alarm2/stopwatch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'daerah.dart';
+import 'dart:async';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: "Flutter App Demo"),
+      // home: MyHomePage(title: "Flutter App Demo"),
+      routes: {
+        '/': (context) => MyHomePage(title: "Flutter App Demo"),
+        '/alarm': (context) => AlarmPage(),
+        '/stopwatch': (context) => StopWatchPage(),
+        '/daerah': (context) => Daerah(),
+      },
     );
   }
 }
@@ -28,7 +35,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String currentTime = "";
+  late Timer timer;
+
   @override
+  void initState() {
+    super.initState();
+    _updateTime();
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      _updateTime();
+    });
+  }
+
+  void _updateTime() {
+    final now = DateTime.now();
+    setState(() {
+      currentTime = "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:${now.second.toString().padLeft(2, '0')}";
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.all(10),
             child: Text(
-              "Alarm Pro Max",
+              currentTime,
               style: TextStyle(
                 color: Colors.blue[200],
                 fontSize: 100,
@@ -64,12 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsetsGeometry.only(right: 5.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    debugPrint("Tombol alarm Di tekan");
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AlarmPage()),
-                    );
+                    Navigator.pushNamed(context, '/alarm');
                   },
                   child: Text("Buat Alarm"),
                 ),
@@ -78,10 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsetsGeometry.only(left: 5.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => StopWatchPage()),
-                    );
+                    Navigator.pushNamed(context, '/stopwatch');
                   },
                   child: Text("StopWatch"),
                 ),
@@ -92,10 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsetsGeometry.all(10),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Daerah()),
-                );
+                Navigator.pushNamed(context, '/daerah');
               },
               child: Text("Button route"),
             ),

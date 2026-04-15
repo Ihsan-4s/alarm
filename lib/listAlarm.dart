@@ -9,8 +9,7 @@ class ListAlarm extends StatefulWidget {
 }
 
 class _ListAlarmState extends State<ListAlarm> {
-  bool isOn = false;
-  bool isOn2 = false;
+  List<bool> isOnList = List.generate(10, (index) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +42,10 @@ class _ListAlarmState extends State<ListAlarm> {
                       // Icon(Icons.toggle_off),
                       Switch(
                         activeColor: Colors.blue,
-                        value: isOn2,
+                        value: isOnList[index],
                         onChanged: (value) {
                           setState(() {
-                            isOn2 = value;
+                            isOnList[index] = value;
                           });
                         },
                       ),

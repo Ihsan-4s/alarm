@@ -14,7 +14,7 @@ class _editAlarmState extends State<editAlarm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Edit Alarm"), leading: Icon(Icons.close)),
+      appBar: AppBar(title: Text("Edit Alarm")),
       body: SingleChildScrollView(
         child: Column(
           children: [

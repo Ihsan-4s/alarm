@@ -22,10 +22,8 @@ class _ListAlarmState extends State<ListAlarm> {
         itemCount: 10,
         itemBuilder: (context, index) {
           return 
-            Card(
-              elevation: 10.0,
-              child: InkWell(
-                onTap: () {
+              ListTile(
+                  onTap: () {
                     Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -33,8 +31,6 @@ class _ListAlarmState extends State<ListAlarm> {
                               ),
                             );
                 },
-
-                child: ListTile(
                   leading: Icon(Icons.alarm_sharp),
                   title: Text("02:50"),
                   subtitle: Text("Everyday"),
@@ -49,9 +45,7 @@ class _ListAlarmState extends State<ListAlarm> {
                           });
                         },
                       ),
-                ),
-              ),
-            );
+                );
         },
       )
     );

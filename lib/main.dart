@@ -3,7 +3,6 @@ import 'package:alarm2/alarm.dart';
 import 'package:alarm2/stopwatch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'daerah.dart';
-import 'dart:async';
 
 void main() {
   runApp(MyApp());
@@ -35,24 +34,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String currentTime = "";
-  late Timer timer;
 
   @override
-  void initState() {
-    super.initState();
-    _updateTime();
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      _updateTime();
-    });
-  }
-
-  void _updateTime() {
-    final now = DateTime.now();
-    setState(() {
-      currentTime = "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:${now.second.toString().padLeft(2, '0')}";
-    });
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.all(10),
             child: Text(
-              currentTime,
+              "11:40",
               style: TextStyle(
                 color: Colors.blue[200],
                 fontSize: 100,

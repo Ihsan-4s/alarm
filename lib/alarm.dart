@@ -24,7 +24,7 @@ class _AlarmPageState extends State<AlarmPage> {
               child: Icon(Icons.alarm, size: 100, color: Colors.blue),
             ),
           ),
-          Text("07 : 59", style: TextStyle(fontSize: 35)),
+          Text("11 : 40", style: TextStyle(fontSize: 35)),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);

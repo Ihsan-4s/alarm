@@ -20,7 +20,7 @@ class _editAlarmState extends State<editAlarm> {
           children: [
             Padding(
               padding: EdgeInsetsGeometry.only(top: 100, bottom: 50),
-              child: Text("03 : 15", style: TextStyle(fontSize: 100)),
+              child: Text("11 : 40", style: TextStyle(fontSize: 100)),
             ),
             Card(
               child: ListTile(
